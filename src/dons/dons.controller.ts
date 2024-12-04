@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common'
 import { DonsService } from './dons.service'
 import { Request } from 'express'
 import { CreateOrderDto } from './dtos/create-order.dto'
@@ -12,6 +12,13 @@ export class DonsController {
         const maTaiKhoan = +req.headers['x-user-id']
 
         const metadata = await this.donsService.createOrder(maTaiKhoan, createOrderDto)
+
+        return metadata
+    }
+
+    @Get(':id')
+    async getOrderDetails(@Param('id') maDon: string) {
+        const metadata = await this.donsService.getOrderDetails(+maDon)
 
         return metadata
     }

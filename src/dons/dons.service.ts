@@ -39,6 +39,34 @@ export class DonsService {
             })
         )
 
+        delete don.TaiKhoan
+
+        return don
+    }
+
+    async getOrderDetails(maDon: number) {
+        const don = await this.donRepository.findOne({
+            where: {
+                MaDon: maDon
+            },
+            relations: {
+                HoaDons: true
+            },
+            order: {
+                MaDon: 'ASC'
+            },
+            select: {
+                MaDon: true,
+                SoLuongNguoiO: true,
+                SoDienThoaiLienLac: true,
+                ThoiGianTaoDon: true,
+                HoaDons: {
+                    SoThuTu: true,
+                    TongTien: true
+                }
+            }
+        })
+
         return don
     }
 }

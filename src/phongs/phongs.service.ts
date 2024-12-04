@@ -40,4 +40,12 @@ export class PhongsService {
             ViTri: viTri
         })
     }
+
+    async getAllRooms() {
+        return this.phongRepository.find({
+            order: {
+                MaPhong: 'ASC'
+            }
+        })
+    }
 }
