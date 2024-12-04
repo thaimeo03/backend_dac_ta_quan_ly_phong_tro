@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { TaiKhoan } from 'databases/entities/tai-khoan.entity'
 import { Repository } from 'typeorm'
-import { LoginDto } from './dto/login.dto'
+import { LoginDto } from './dtos/login.dto'
 
 @Injectable()
 export class TaiKhoansService {

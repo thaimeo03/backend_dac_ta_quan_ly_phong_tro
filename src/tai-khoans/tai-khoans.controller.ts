@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common'
-import { LoginDto } from './dto/login.dto'
+import { LoginDto } from './dtos/login.dto'
 import { TaiKhoansService } from './tai-khoans.service'
 
 @Controller('accounts')
