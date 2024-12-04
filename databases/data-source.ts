@@ -8,5 +8,5 @@ export const dataSourceOptions: DataSourceOptions = {
     password: 'mysecretpassword',
     database: 'QuanLyPhongTroThang',
     entities: ['dist/**/*.entity{.ts,.js}'],
-    synchronize: false
+    synchronize: true
 }

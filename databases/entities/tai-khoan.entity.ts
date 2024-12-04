@@ -17,7 +17,7 @@ export class TaiKhoan {
     @Column({ type: 'varchar', length: 30 })
     MatKhau: string
 
-    @Column({ type: 'enum', enum: Role })
+    @Column({ type: 'enum', enum: Role, default: Role.KhachHang })
     VaiTro: Role
 
     @OneToMany(() => Phong, (phong) => phong.TaiKhoan)
