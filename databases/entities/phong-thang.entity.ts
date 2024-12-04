@@ -1,7 +1,6 @@
 import { TinhTrangPhongThang } from 'common/enums/phong-thang.enum'
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
 import { Phong } from './phong.entity'
-import { Don } from './don.entity'
 import { HoaDon } from './hoa-don.entity'
 
 @Entity()
@@ -33,9 +32,6 @@ export class PhongThang {
     @ManyToOne(() => Phong, (phong) => phong.PhongThangs)
     @JoinColumn({ name: 'MaPhong' })
     Phong: Phong
-
-    @OneToMany(() => Don, (don) => don.PhongThang)
-    Dons: Don[]
 
     @OneToMany(() => HoaDon, (hoaDon) => hoaDon.PhongThang)
     HoaDons: HoaDon[]

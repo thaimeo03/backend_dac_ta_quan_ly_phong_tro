@@ -6,6 +6,7 @@ import { LoaiPhong } from 'databases/entities/loai-phong.entity'
 
 @Module({
     imports: [TypeOrmModule.forFeature([HoaDon, LoaiPhong])],
-    providers: [HoaDonsService]
+    providers: [HoaDonsService],
+    exports: [HoaDonsService]
 })
 export class HoaDonsModule {}

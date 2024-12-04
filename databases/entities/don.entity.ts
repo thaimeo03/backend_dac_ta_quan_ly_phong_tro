@@ -1,6 +1,5 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { TaiKhoan } from './tai-khoan.entity'
-import { PhongThang } from './phong-thang.entity'
 import { HoaDon } from './hoa-don.entity'
 
 @Entity()
@@ -19,9 +18,6 @@ export class Don {
 
     @ManyToOne(() => TaiKhoan, (taiKhoan) => taiKhoan.Dons)
     TaiKhoan: TaiKhoan
-
-    @ManyToOne(() => PhongThang, (phongThang) => phongThang.Dons)
-    PhongThang: PhongThang
 
     @OneToMany(() => HoaDon, (hoaDon) => hoaDon.Don)
     HoaDons: HoaDon[]
