@@ -7,7 +7,8 @@ async function bootstrap() {
 
     app.useGlobalFilters(new BaseExceptionFilter(httpAdapter)) // Exception filter is global
     app.enableCors({
-        origin: '*'
+        origin: 'http://localhost:3000',
+        credentials: true
     })
 
     await app.listen(9999)
