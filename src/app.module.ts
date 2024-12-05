@@ -8,9 +8,10 @@ import { DonsModule } from './dons/dons.module';
 import { HoaDonsModule } from './hoa-dons/hoa-dons.module';
 import { LoaiPhongsModule } from './loai-phongs/loai-phongs.module';
 import { ViTrisModule } from './vi-tris/vi-tris.module';
+import { PhongThangsModule } from './phong-thangs/phong-thangs.module';
 
 @Module({
-    imports: [TypeOrmModule.forRoot(dataSourceOptions), TaiKhoansModule, PhongsModule, DonsModule, HoaDonsModule, LoaiPhongsModule, ViTrisModule],
+    imports: [TypeOrmModule.forRoot(dataSourceOptions), TaiKhoansModule, PhongsModule, DonsModule, HoaDonsModule, LoaiPhongsModule, ViTrisModule, PhongThangsModule],
     controllers: [AppController],
     providers: []
 })

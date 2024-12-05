@@ -6,6 +6,7 @@ import { CreateOrderDto } from './dtos/create-order.dto'
 import { TaiKhoan } from 'databases/entities/tai-khoan.entity'
 import { HoaDonsService } from 'src/hoa-dons/hoa-dons.service'
 import { PhongThang } from 'databases/entities/phong-thang.entity'
+import { TinhTrangPhongThang } from 'common/enums/phong-thang.enum'
 
 @Injectable()
 export class DonsService {
@@ -28,20 +29,33 @@ export class DonsService {
             TaiKhoan: taiKhoan
         })
 
-        await Promise.all(
+        const hoaDons = await Promise.all(
             phongThangKeys.map(async (phongThangKey) => {
                 const phongThang = await this.phongThangRepository.findOneBy({
                     MaPhong: phongThangKey.maPhong,
                     Nam: phongThangKey.nam,
                     Thang: phongThangKey.thang
                 })
+                await this.phongThangRepository.update(
+                    {
+                        MaPhong: phongThangKey.maPhong,
+                        Nam: phongThangKey.nam,
+                        Thang: phongThangKey.thang
+                    },
+                    { TinhTrang: TinhTrangPhongThang.DaThue }
+                )
                 return this.hoaDonsService.createHoaDon({ don, phongThang })
             })
         )
 
+        const tongTien = hoaDons.reduce((total, hoaDon) => total + hoaDon.TongTien, 0)
+
         delete don.TaiKhoan
 
-        return don
+        return {
+            ...don,
+            TongTien: tongTien
+        }
     }
 
     async getOrderDetails(maDon: number) {
