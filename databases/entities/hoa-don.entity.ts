@@ -1,5 +1,5 @@
 import { TrangThaiHoaDon } from 'common/enums/hoa-don.enum'
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { PhongThang } from './phong-thang.entity'
 import { Don } from './don.entity'
 
@@ -13,6 +13,9 @@ export class HoaDon {
 
     @Column({ type: 'enum', enum: TrangThaiHoaDon, default: TrangThaiHoaDon.ChuaThanhToan })
     TrangThai: TrangThaiHoaDon
+
+    @UpdateDateColumn()
+    ThoiGianThanhToan: Date
 
     @ManyToOne(() => PhongThang, (phongThang) => phongThang.HoaDons)
     PhongThang: PhongThang

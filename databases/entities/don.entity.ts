@@ -19,6 +19,9 @@ export class Don {
     @ManyToOne(() => TaiKhoan, (taiKhoan) => taiKhoan.Dons)
     TaiKhoan: TaiKhoan
 
+    @ManyToOne(() => TaiKhoan, (taiKhoan) => taiKhoan.Dons, { nullable: true })
+    NhanVienTiepNhan: TaiKhoan
+
     @OneToMany(() => HoaDon, (hoaDon) => hoaDon.Don)
     HoaDons: HoaDon[]
 }
